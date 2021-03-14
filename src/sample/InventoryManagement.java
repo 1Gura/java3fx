@@ -54,19 +54,46 @@ public class InventoryManagement {
         }
     }
 
-    public void addItem(TextField field1, TextField field2, TextField field3, TextField field4) {
-        this.sportsEquipmentArrayList.add(new Ball.Volleyball(
-                field1.getText(),
-                getInt(field2.getText()),
-                getInt(field3.getText()),
-                getInt(field4.getText())
-        ));
+    public void addItemList(SportsEquipment sportsEquipment) {
+        this.sportsEquipmentArrayList.add(sportsEquipment);
+    }
+
+    public void addItem(TextField field1, TextField field2, TextField field3, TextField field4, String str) {
+        switch (str) {
+            case "Волейбольный мяч" -> {
+                Ball.Volleyball volleyball = new Ball.Volleyball(
+                        field1.getText(),
+                        getInt(field2.getText()),
+                        getInt(field3.getText()),
+                        getInt(field4.getText()));
+                addItemList(volleyball);
+            }
+            case "Теннисный мяч" -> {
+                Ball.TennisBall tennisBall = new Ball.TennisBall(
+                        field1.getText(),
+                        getInt(field2.getText()),
+                        getInt(field3.getText()),
+                        field4.getText());
+                addItemList(tennisBall);
+            }
+            case "Ракетка" -> {
+
+            }
+            case "Штанга" -> {
+
+            }
+            case "Гиря" -> {
+
+            }
+            case "Метательное копье" -> {
+
+            }
+        }
     }
 
     public HBox setTypeEquipment(String str) {
         switch (str) {
             case "Волейбольный мяч" -> {
-                Ball.Volleyball volleyball = new Ball.Volleyball();
                 this.label1 = new Label("Выберите вид спорта:");
                 this.label2 = new Label("Вес мяча (г)");
                 this.label3 = new Label("Диаметр мяча");
@@ -75,9 +102,10 @@ public class InventoryManagement {
                 this.textField2 = new TextField();
                 this.textField3 = new TextField();
                 this.textField4 = new TextField();
-                this.button = new Button();
+                this.button = new Button("Добавить");
                 button.setOnAction(actionEvent -> {
-                    addItem(this.textField1, this.textField2,this.textField3, this.textField4);
+                    Ball.Volleyball volleyball = new Ball.Volleyball();
+                    addItem(this.textField1, this.textField2, this.textField3, this.textField4, str);
                 });
                 return new HBox(new FlowPane(Orientation.VERTICAL, 20, 20,
                         label1,
@@ -92,7 +120,29 @@ public class InventoryManagement {
                 ));
             }
             case "Теннисный мяч" -> {
-                return new HBox();
+                this.label1 = new Label("Выберите вид спорта:");
+                this.label2 = new Label("Вес мяча (г)");
+                this.label3 = new Label("Диаметр мяча");
+                this.label4 = new Label("Цвет мяча");
+                this.textField1 = new TextField();
+                this.textField2 = new TextField();
+                this.textField3 = new TextField();
+                this.textField4 = new TextField();
+                this.button = new Button("Добавить");
+                button.setOnAction(actionEvent -> {
+                    addItem(this.textField1, this.textField2, this.textField3, this.textField4, str);
+                });
+                return new HBox(new FlowPane(Orientation.VERTICAL, 20, 20,
+                        label1,
+                        textField1,
+                        label2,
+                        textField2,
+                        label3,
+                        textField3,
+                        label4,
+                        textField4,
+                        button
+                ));
             }
             case "Ракетка" -> {
                 return new HBox();
@@ -119,11 +169,12 @@ public class InventoryManagement {
 
     }
 
-    public void outEquipmentAll(SportsEquipment[] sportsEquipments) {
-        System.out.println("Вывод всего оборудования.");
-        for (SportsEquipment equipment : sportsEquipments) {
-            System.out.println(equipment.toString());
+    public String outEquipmentAll() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (SportsEquipment equipment : sportsEquipmentArrayList) {
+            stringBuilder.append(equipment.toString());
         }
+        return stringBuilder.toString();
     }
 
     public void outEquipmentTennis(SportsEquipment[] sportsEquipments) {

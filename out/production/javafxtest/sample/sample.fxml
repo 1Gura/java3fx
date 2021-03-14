@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Label fx:id="label1" layoutX="24.0" layoutY="20.0" prefHeight="26.0" prefWidth="167.0" text="Введите тип инвентаря" />
-      <Button fx:id="btn1" layoutX="14.0" layoutY="503.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" text="Добавить" />
+      <Button fx:id="btn1" layoutX="14.0" layoutY="503.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" text="Обновить список" />
       <ComboBox fx:id="listEquipment" layoutX="24.0" layoutY="46.0" prefWidth="150.0" />
       <Label layoutX="24.0" layoutY="97.0" prefHeight="18.0" prefWidth="150.0" text="Вид спорта:" />
       <TextField fx:id="typeSport" layoutX="25.0" layoutY="115.0" />

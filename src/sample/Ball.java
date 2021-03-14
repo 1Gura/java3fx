@@ -74,6 +74,13 @@ abstract public class Ball extends SportsEquipment {
         //Добавить уникальные свойства
         String color;
 
+        public TennisBall(String typeSport, int weight, int diametr, String color) {
+            this.typeSport = typeSport;
+            this.weight = weight;
+            this.diameter = diametr;
+            this.color = color;
+        }
+
         @Override
         protected void init(Scanner scanner) {
             super.init(scanner);
